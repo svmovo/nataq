@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "إملاء بالصوت",
+  "version": "1.1.0",
+  "author": "svmovo",
+  "description": "سجّل صوتك وحوّله لنص تقدر تنسخه على طول.",
+  "action": {},
+  "background": {
+    "service_worker": "sw.js"
+  },
+  "permissions": ["tabs"]
+}
