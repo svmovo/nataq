@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إملاء بالصوت</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <h1>إملاء بالصوت</h1>
+    <p class="hint">دوس «ابدأ الكلام» واتكلم عادي. الكلام هيظهر تحت على طول، وبعد ما تخلص دوس «نسخ» واعمل لصق في أي مكان.</p>
+
+    <div class="row">
+      <button id="toggle" class="big">🎙️ ابدأ الكلام</button>
+      <select id="lang" aria-label="اللغة">
+        <option value="ar-EG" selected>عربي (مصر)</option>
+        <option value="ar-SA">عربي فصحى</option>
+        <option value="en-US">English</option>
+      </select>
+    </div>
+
+    <div id="status" class="status">جاهز</div>
+    <div id="live" class="live" aria-live="polite"></div>
+
+    <textarea id="text" rows="10" placeholder="النص هيطلع هنا..."></textarea>
+
+    <div class="row">
+      <button id="copy">📋 انسخ النص</button>
+      <button id="copyClear">📋 انسخ وامسح</button>
+      <button id="clear">🗑️ امسح</button>
+    </div>
+  </main>
+  <footer class="credit">By svmovo</footer>
+  <script src="recorder.js"></script>
+</body>
+</html>
