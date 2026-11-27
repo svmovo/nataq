@@ -1,21 +1,11 @@
 {
   "manifest_version": 3,
   "name": "نطق | Nataq",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "author": "svmovo",
   "description": "دوس الأيقونة، اتكلم، وانسخ النص من غير ما تسيب الصفحة. By svmovo",
   "action": {
-    "default_title": "نطق | Nataq",
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    }
-  },
-  "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "default_title": "نطق | Nataq"
   },
   "background": {
     "service_worker": "sw.js"
@@ -30,7 +20,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["panel.html", "panel.css", "panel.js", "icons/icon128.png"],
+      "resources": ["panel.html", "panel.css", "panel.js"],
       "matches": ["<all_urls>"]
     }
   ]
