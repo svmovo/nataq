@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div id="nataq-bar">
+    <div class="nt-row nt-head">
+      <img class="nt-logo" src="icons/icon128.png" alt="نطق">
+      <span class="nt-title">نطق</span>
+      <select id="lang" aria-label="اللغة">
+        <option value="ar-EG" selected>عربي مصر</option>
+        <option value="ar-SA">فصحى</option>
+        <option value="en-US">English</option>
+      </select>
+      <button type="button" class="nt-btn nt-hide" id="close" title="اقفل">✕</button>
+    </div>
+
+    <div class="nt-row">
+      <button type="button" class="nt-btn nt-go" id="toggle">🎙️ اتكلم</button>
+      <span class="nt-status" id="status">جاهز. دوس «اتكلم» وابدأ كلام.</span>
+    </div>
+
+    <div class="nt-live" id="live"></div>
+    <textarea id="text" rows="6" placeholder="النص هيطلع هنا..."></textarea>
+
+    <div class="nt-row">
+      <button type="button" class="nt-btn" id="copy">📋 انسخ</button>
+      <button type="button" class="nt-btn" id="copyClear">📋 انسخ وامسح</button>
+      <button type="button" class="nt-btn" id="clear">🗑️ امسح</button>
+    </div>
+
+    <div class="nt-credit">By svmovo</div>
+  </div>
+  <script src="panel.js"></script>
+</body>
+</html>
