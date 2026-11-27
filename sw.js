@@ -34,41 +34,6 @@ function drawIcon(size) {
   // جسم المايك
   var cx = w / 2;
   var white = '#EFEAF2';
-// By svmovo
-// الأيقونة بتترسم في وقت التشغيل (OffscreenCanvas) — الإضافة من غير أي ملفات صور
-
-function drawIcon(size) {
-  var c = new OffscreenCanvas(size, size);
-  var x = c.getContext('2d');
-  var w = size;
-
-  function rr(l, t, r, b, rad) {
-    x.beginPath();
-    x.moveTo(l + rad, t);
-    x.arcTo(r, t, r, b, rad);
-    x.arcTo(r, b, l, b, rad);
-    x.arcTo(l, b, l, t, rad);
-    x.arcTo(l, t, r, t, rad);
-    x.closePath();
-  }
-
-  // الخلفية الغامقة
-  var g = x.createLinearGradient(0, 0, 0, w);
-  g.addColorStop(0, '#241A2B');
-  g.addColorStop(1, '#1B1220');
-  rr(0, 0, w, w, w * 0.22);
-  x.fillStyle = g;
-  x.fill();
-
-  // الإطار العنابي
-  rr(w * 0.04, w * 0.04, w * 0.96, w * 0.96, w * 0.19);
-  x.strokeStyle = '#7A1C38';
-  x.lineWidth = Math.max(1, w * 0.05);
-  x.stroke();
-
-  // جسم المايك
-  var cx = w / 2;
-  var white = '#EFEAF2';
   x.fillStyle = white;
   rr(cx - w * 0.12, w * 0.20, cx + w * 0.12, w * 0.56, w * 0.12);
   x.fill();
