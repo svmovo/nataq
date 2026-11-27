@@ -22,7 +22,7 @@ body {
 
 .nt-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; flex-wrap: wrap; }
 .nt-head { padding-bottom: 6px; }
-.nt-logo { width: 24px; height: 24px; border-radius: 6px; }
+.nt-logo { width: 26px; height: 26px; }
 .nt-title { font-weight: 700; font-size: 15px; }
 
 .nt-btn {
