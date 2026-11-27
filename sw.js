@@ -70,18 +70,25 @@ chrome.runtime.onInstalled.addListener(setToolbarIcon);
 chrome.runtime.onStartup.addListener(setToolbarIcon);
 setToolbarIcon();
 
-// دوس الأيقونة: يفتح/يقفل اللوحة العائمة في نفس الصفحة، من غير أي تاب جديد
+async function flagRestricted(tabId) {
+  // علامة حمرا على الأيقونة توضح إن الصفحة دي ممنوعة (chrome:// أو متجر كروم)
+  try {
+    await chrome.action.setBadgeBackgroundColor({ tabId: tabId, color: '#C0392B' });
+    await chrome.action.setBadgeText({ tabId: tabId, text: '✕' });
+    await chrome.action.setTitle({ tabId: tabId, title: 'نطق: الصفحة دي ممنوعة — افتح موقع عادي (https) ودوس تاني' });
+  } catch (e) {}
+}
+
+// دوس الأيقونة: حقن اللوحة عند الطلب وفتح/قفلها في نفس الصفحة
 chrome.action.onClicked.addListener(async (tab) => {
   if (!tab || !tab.id) return;
   try {
-    await chrome.tabs.sendMessage(tab.id, { type: "nataq-toggle" });
+    // الحقن عند الطلب بيغطي التابات اللي اتحملت قبل تركيب الإضافة
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content.js'] });
+    await chrome.tabs.sendMessage(tab.id, { type: 'nataq-toggle' });
+    await chrome.action.setBadgeText({ tabId: tab.id, text: '' });
+    await chrome.action.setTitle({ tabId: tab.id, title: 'نطق | Nataq' });
   } catch (e) {
-    // الصفحة اتحملت قبل تركيب الإضافة: حقن السكربت وجرب تاني
-    try {
-      await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["content.js"] });
-      await chrome.tabs.sendMessage(tab.id, { type: "nataq-toggle" });
-    } catch (e2) {
-      // صفحات النظام (chrome://) ممنوع الحقن فيها
-    }
+    flagRestricted(tab.id);
   }
 });
