@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "نطق | Nataq",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "author": "svmovo",
   "description": "دوس الأيقونة، اتكلم، وانسخ النص من غير ما تسيب الصفحة. By svmovo",
   "action": {
@@ -10,18 +10,19 @@
   "background": {
     "service_worker": "sw.js"
   },
-  "permissions": ["scripting"],
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_idle"
-    }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": ["panel.html", "panel.css", "panel.js"],
-      "matches": ["<all_urls>"]
     }
   ]
 }
